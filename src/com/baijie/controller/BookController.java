@@ -33,6 +33,7 @@ public class BookController {
     /**依据删除图书*/
     public String deleteBookById(Integer id){
         System.out.println(id);
-        return "redirect:listbook";
+        service.deleteBook(id);
+        return "redirect:list";
     }
 }
