@@ -36,4 +36,50 @@ public class BookController {
         service.deleteBook(id);
         return "redirect:/book/list";
     }
+
+    //去往更新图书的页面
+    @RequestMapping(value = "/toUpdateBook")
+    public ModelAndView toUpdateBook(Integer id){
+        ModelAndView modelAndView =
+                new ModelAndView();
+
+        //查找图书
+        Book book = service.queryBook(id);
+
+        //向模型添加数据
+        modelAndView.addObject("book",book);
+        //设置转发视图
+        modelAndView.setViewName("updateBook");
+        return modelAndView;
+    }
+
+    /**
+     * 更新图书信息
+     * */
+    @RequestMapping(value = "/updateBook")
+    public String updateBook(Book book){
+        System.out.println(book);
+
+        service.updateBook(book);
+        //重定向到查询所有图书的页面。
+        return "redirect:/book/list";
+    }
+
+    /**
+     * 去往添加图书的页面*/
+    @RequestMapping(value = "/toAddBook")
+    public String toAddBook(){
+        return "/addBook";
+    }
+
+    /**
+     * 添加图书请求*/
+    @RequestMapping(value = "/addBook")
+    public String addBook(Book book){
+        System.out.println(book);
+        //持久化
+        service.saveBook(book);
+        //重定向到查询所有书本页面
+        return "redirect:/book/list";
+    }
 }
