@@ -16,11 +16,14 @@ public class BookController {
 
     @RequestMapping(value = "/list")
     public ModelAndView list(){
-
+        //获取数据
         List<Book> bookList = service.queryListBook();
+        //模型对象
         ModelAndView modelAndView =
                 new ModelAndView();
+        //向模型添加数据
         modelAndView.addObject("list",bookList);
+        //返回视图页面
         modelAndView.setViewName("listbook");
         return modelAndView;
     }
