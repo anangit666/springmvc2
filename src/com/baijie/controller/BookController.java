@@ -29,11 +29,11 @@ public class BookController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "delete")
+    @RequestMapping(value = "/delete")
     /**依据删除图书*/
     public String deleteBookById(Integer id){
         System.out.println(id);
         service.deleteBook(id);
-        return "redirect:list";
+        return "redirect:/book/list";
     }
 }
