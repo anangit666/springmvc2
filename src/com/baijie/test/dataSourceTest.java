@@ -46,11 +46,12 @@ public class dataSourceTest {
 
     @Test
     public void testUpdateBook(){
-        System.out.println(dao.updateBook(new Book(1021,"tttt","hja",new BigDecimal(11),44,44)));
+        System.out.println(dao.updateBook(new Book(1021,"aaaa","hja",new BigDecimal(11),44,44)));
     }
 
     @Test
     public void testQueryById(){
+
         System.out.println(dao.queryBookById(1021));
     }
 

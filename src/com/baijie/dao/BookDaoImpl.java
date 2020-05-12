@@ -50,13 +50,13 @@ public class BookDaoImpl implements BookDao {
     @Override
     public Book queryBookById(Integer id) {
         String sql = "select id,name,author,price,sales,stock from t_book where id=?";
-        Book book = (Book)this.jdbcTemplate.query(sql,new BeanPropertyRowMapper<Book>(Book.class),id);
+        Book book = (Book)this.jdbcTemplate.queryForObject(sql,new BeanPropertyRowMapper<Book>(Book.class),id);
         return book;
     }
 
     @Override
     public List<Book> queryList() {
-        String sql = "select id,name,author,price,sales,stock from t_book where id=?";
+        String sql = "select id,name,author,price,sales,stock from t_book";
         return this.jdbcTemplate.query(sql,new BeanPropertyRowMapper<Book>(Book.class));
     }
 }
