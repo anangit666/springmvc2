@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.List;
 
 @Controller
+@RequestMapping(value = "book")
 public class BookController {
     @Autowired
     private BookService service;
@@ -26,5 +27,12 @@ public class BookController {
         //返回视图页面
         modelAndView.setViewName("listbook");
         return modelAndView;
+    }
+
+    @RequestMapping(value = "delete")
+    /**依据删除图书*/
+    public String deleteBookById(Integer id){
+        System.out.println(id);
+        return "redirect:listbook";
     }
 }
